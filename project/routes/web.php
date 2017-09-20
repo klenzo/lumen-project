@@ -11,6 +11,10 @@
 |
 */
 
-$router->get('/', function () use ($router) {
-    return $router->app->version();
-});
+$router->get('/', [
+    'as' => 'home', 'uses' => 'ArticleController@list'
+]);
+
+$router->get('/article/{slug}', 'ArticleController@article');
+$router->get('/category/{slug}', 'ArticleController@category');
+$router->get('/image/{path}', 'ArticleController@image');
